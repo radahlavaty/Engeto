@@ -26,6 +26,7 @@ print(40*"-")
 
 #Select the text_number to be analyzed
 text_number = input("Enter a number btw. 1 and 3 to select: ")
+print(40*"-")
 
 #Check if the text_number is correct
 if (int(text_number) < 1) and (int(text_number) > 3):
@@ -45,7 +46,7 @@ for word in selected_text_list:
 
 #Count of all words
 words_amount = len(selected_text_list)
-print(f"There are {words_amount} in the selected text.")
+print(f"There are {words_amount} words in the selected text.")
 
 #Count of all words starting with upper case letter
 words_upper_start_amount = 0
@@ -90,8 +91,6 @@ for word in selected_text_list:
 #Dictionary Init
 for length in range(1,max_length_word+1):
     length_words_dict[length] = 0
-
-print(length_words_dict)
 
 #Counting occurences for every lenght
 for word in selected_text_list:
