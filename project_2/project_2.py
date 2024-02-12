@@ -150,6 +150,20 @@ def clear_screen():
     else:
         os.system('clear')
 
+def save_game_results(start_datetime, end_datetime, duration, game_winner):
+    """Saves the game results with date, start and end times, duration, and winner to a text file."""
+    # Format start and end datetime to string
+    start_str = start_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    end_str = end_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Construct the result string
+    result_str = (f"Date: {start_datetime.date()}, Start: {start_str}, End: {end_str}, "
+                  f"Game Duration: {duration:.2f} seconds, Winner: {game_winner}\n")
+    
+    # Open the file and append the result string
+    with open("tic_tac_toe_results.txt", "a") as file:
+        file.write(result_str)
+
 def tic_tac_toe_game():
     """Runs the main game loop with an option to replay the game."""
     play_again = True
@@ -199,14 +213,7 @@ def tic_tac_toe_game():
         duration = end_time - start_time
         print(f"Game duration: {duration:.2f} seconds.")
         
-        # Format start and end datetime
-        start_str = start_datetime.strftime("%Y-%m-%d %H:%M:%S")
-        end_str = end_datetime.strftime("%Y-%m-%d %H:%M:%S")
-
-        # Write game results with date and time to file
-        with open("tic_tac_toe_results.txt", "a") as file:
-            file.write(f"Date: {start_datetime.date()}, Start: {start_str}, End: {end_str}, "
-                       f"Game Duration: {duration:.2f} seconds, Winner: {game_winner}\n")
+        save_game_results(start_datetime, end_datetime, duration, game_winner)
 
         play_again = ask_for_new_game()
 
